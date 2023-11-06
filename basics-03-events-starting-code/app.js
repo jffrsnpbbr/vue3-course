@@ -6,14 +6,16 @@ const app = Vue.createApp({
       confirmedName: '',
     };
   },
-  methods: {
-    outputFullname() {
+  computed: {
+    fullname() {
       console.log('Running again...');
       if (this.name === '') {
         return '';
       }
       return this.name + ' ' + 'Schwarzmuller';
     },
+  },
+  methods: {
     add(num) {
       this.counter = this.counter + num;
     },
@@ -24,6 +26,7 @@ const app = Vue.createApp({
       this.name = ''
     }
   },
+  
 });
 
 app.mount('#events');
