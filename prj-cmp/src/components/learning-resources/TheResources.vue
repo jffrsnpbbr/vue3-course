@@ -43,12 +43,18 @@ export default {
   },
   provide() {
     return {
-      resources: this.storedResources
+      resources: this.storedResources,
+      addResource: this.addResource
     }
   },
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+    addResource(title, description, link) {
+      const newResource = { id: crypto.randomUUID(), title, description, link }
+      this.storedResources.unshift(newResource);
+      this.selectedTab = 'stored-resources';
     }
   }
 }
