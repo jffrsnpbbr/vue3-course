@@ -1,4 +1,5 @@
 <template>
+
   <ul>
     <learning-resource
       v-for="res in resources"
@@ -12,6 +13,7 @@
 
 <script>
 import LearningResource from './LearningResource.vue';
+
 
 export default {
   components: { LearningResource },
