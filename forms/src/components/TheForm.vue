@@ -52,7 +52,7 @@
       <label for="confirm-terms">Agree to terms of use?</label>
     </div>
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
     </div>
     <div>
       <button>Save Data</button>
@@ -73,7 +73,8 @@ export default {
       interest: [],
       how: null,
       confirm: false,
-      usernameValidity: "pending"
+      rating: null,
+      usernameValidity: "pending",
     };
   },
   methods: {
@@ -94,6 +95,8 @@ export default {
       console.log("confirm?");
       console.log(this.confirm);
       this.confirm = false;
+      console.log(this.rating);
+      this.rating = null;
     },
     validateInput() {
       if (this.userName === "" || this.userName.length === 0) {
@@ -104,7 +107,6 @@ export default {
       }
     }
   },
-  components: { RatingControl }
 }
 </script>
 
