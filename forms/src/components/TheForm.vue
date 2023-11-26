@@ -51,6 +51,9 @@
       <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm">
       <label for="confirm-terms">Agree to terms of use?</label>
     </div>
+    <div class="form-control">
+      <rating-control></rating-control>
+    </div>
     <div>
       <button>Save Data</button>
     </div>
@@ -58,45 +61,50 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
+
 export default {
+  components: { RatingControl },
   data() {
     return {
-      userName: '',
+      userName: "",
       userAge: null,
-      referrer: 'wom',
+      referrer: "wom",
       interest: [],
       how: null,
       confirm: false,
-      usernameValidity: 'pending'
-    }
+      usernameValidity: "pending"
+    };
   },
   methods: {
     submitForm() {
-      console.log('Username' + this.userName);
+      console.log("Username" + this.userName);
       console.log(this.userAge + 5);
       console.log(this.$refs.ageInput.value + 5);
       console.log(31);
       this.userAge = null;
-      console.log('referrer ' + this.referrer);
-      this.referrer = 'wom';
-      console.log('Checkboxes');
+      console.log("referrer " + this.referrer);
+      this.referrer = "wom";
+      console.log("Checkboxes");
       console.log(this.interest);
-      console.log('Radio buttons')
+      console.log("Radio buttons");
       console.log(this.how);
-      this.interest = []
-      this.how = null
-      console.log('confirm?');
+      this.interest = [];
+      this.how = null;
+      console.log("confirm?");
       console.log(this.confirm);
       this.confirm = false;
     },
     validateInput() {
-      if (this.userName === '' || this.userName.length === 0) {
-        this.usernameValidity = 'invalid'
-      } else {
-        this.usernameValidity = 'valid'
+      if (this.userName === "" || this.userName.length === 0) {
+        this.usernameValidity = "invalid";
+      }
+      else {
+        this.usernameValidity = "valid";
       }
     }
-  }
+  },
+  components: { RatingControl }
 }
 </script>
 
