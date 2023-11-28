@@ -13,23 +13,11 @@
           <label for="rating-poor">Poor</label>
         </div>
         <div class="form-control">
-          <input
-            type="radio"
-            id="rating-average"
-            value="average"
-            name="rating"
-            v-model="chosenRating"
-          />
+          <input type="radio" id="rating-average" value="average" name="rating" v-model="chosenRating" />
           <label for="rating-average">Average</label>
         </div>
         <div class="form-control">
-          <input
-            type="radio"
-            id="rating-great"
-            value="great"
-            name="rating"
-            v-model="chosenRating"
-          />
+          <input type="radio" id="rating-great" value="great" name="rating" v-model="chosenRating" />
           <label for="rating-great">Great</label>
         </div>
         <p v-if="invalidInput">
@@ -44,6 +32,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -66,17 +56,25 @@ export default {
       //   rating: this.chosenRating
       // })
 
-      fetch(
+      // fetch(
+      //   'https://vue-http-demo-766ad-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json',
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify({
+      //       name: this.username,
+      //       rating: this.chosenRating
+      //     })
+      //   }
+      // )
+
+      axios.post(
         'https://vue-http-demo-766ad-default-rtdb.asia-southeast1.firebasedatabase.app/surveys.json',
         {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name: this.username,
-            rating: this.chosenRating
-          })
+          name: this.enteredName,
+          rating: this.chosenRating
         }
       )
 
