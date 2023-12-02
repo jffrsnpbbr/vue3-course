@@ -5,7 +5,8 @@
       <div>
         <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
       </div>
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <ul v-else>
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -27,7 +28,8 @@ export default {
   },
   data() {
     return {
-      results: []
+      results: [],
+      isLoading: false
     }
   },
   methods: {
@@ -41,11 +43,13 @@ export default {
           }
         })
         .then((data) => {
+          this.isLoading = true
           const results = []
           for (const id in data) {
             results.push({ id: id, name: data[id].name, rating: data[id].rating })
           }
           this.results = results
+          this.isLoading = false
         })
     }
   },
